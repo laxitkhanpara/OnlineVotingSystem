@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include ('./partials/Metalink.ejs') %>
+
+  <body onload="startTime()">
+    <!-- tap on top starts-->
+    <div class="tap-top"><i data-feather="chevrons-up"></i></div>
+    <!-- tap on tap ends-->
+    <!-- Loader starts-->
+    <%- include ('./partials/Loader.ejs') %>
+      <!-- Loader ends-->
+      <!-- page-wrapper Start-->
+      <div class="page-wrapper compact-wrapper" id="pageWrapper">
+
+        <!-- Page Body Start-->
+        <div class="page-body-wrapper">
+          <div class="container-fluid p-0">
+            <div class="row m-0">
+              <div class="col-xl-5"><img class="bg-img-cover bg-center" src="../images/login/3.jpg" alt="looginpage">
+              </div>
+              <div class="col-xl-7 p-0">
+                <div class="login-card">
+                  <div>
+                    <div><a class="logo text-center" href="index.html"><img class="img-fluid for-light"
+                          src="../images/logo/logo2.png" alt="looginpage"></a></div>
+                    <div class="login-main">
+                      <form class="theme-form" method="post" action="/SignUp">
+                        <h4>Create your account</h4>
+                        <p>Enter your personal details to create account</p>
+                        <div class="form-group">
+                          <label class="col-form-label pt-0">Your Name</label>
+                          <div class="row g-2">
+                            <div class="col-6">
+                              <input name="FirstName" class="form-control" type="text" required="" placeholder="First name">
+                            </div>
+                            <div class="col-6">
+                              <input name="LastName" class="form-control" type="text" required="" placeholder="Last name">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-form-label">Email Address</label>
+                          <input name="Email" class="form-control" type="email" required="" placeholder="Test@gmail.com">
+                        </div>
+                        <div class="form-group">
+                          <label class="col-form-label">Password</label>
+                          <div class="form-input position-relative">
+                            <input name="Password" class="form-control" type="password" name="login[password]" required=""
+                              placeholder="*********">
+                            <div class="show-hide"><span class="show"></span></div>
+                          </div>
+                        </div>
+                        <div class="form-group mb-0">
+                          <div class="checkbox p-0">
+                            <input name="" id="checkbox1" type="checkbox" required>
+                            <label class="text-muted" for="checkbox1">Agree with<a class="ms-2"
+                                href="javascript:void(0)">Privacy Policy</a></label>
+                          </div>
+                          <button class="btn btn-primary btn-block w-100 mt-3" type="submit">Create Account</button>
+                        </div>
+                        <div class="login-social-title">
+                          <h6>Or Sign in with </h6>
+                        </div>
+                        <div class="form-group">
+                          <ul class="login-social">
+                            <li><a href="https://www.linkedin.com/" target="_blank"><i data-feather="linkedin"></i></a>
+                            </li>
+                            <li><a href="https://twitter.com/" target="_blank"><i data-feather="twitter"></i></a></li>
+                            <li><a href="https://www.facebook.com/" target="_blank"><i data-feather="facebook"></i></a>
+                            </li>
+                            <li><a href="https://www.instagram.com/" target="_blank"><i
+                                  data-feather="instagram"></i></a></li>
+                          </ul>
+                        </div>
+                        <p class="mt-4 mb-0 text-center">Already have an account?<a class="ms-2" href="login.html">Sign
+                            in</a></p>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <%- include ('./partials/script') %>
+  </body>
+
+</html>

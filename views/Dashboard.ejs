@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include ('./partials/Metalink.ejs') %>
+
+  <body onload="startTime()">
+    <!-- tap on top starts-->
+    <div class="tap-top"><i data-feather="chevrons-up"></i></div>
+    <!-- tap on tap ends-->
+    <!-- Loader starts-->
+    <%- include ('./partials/Loader.ejs') %>
+      <!-- Loader ends-->
+      <!-- page-wrapper Start-->
+      <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        <!-- Page Header Start-->
+        <%- include ('./partials/header') %>
+          <!-- Page Header Ends-->
+          <!-- Page Body Start-->
+          <div class="page-body-wrapper">
+            <!-- Page Sidebar Start-->
+            <%- include ('./partials/sidebar') %>
+              <!-- Page Sidebar Ends-->
+              <div class="page-body">
+                <div class="container-fluid">
+                  <div class="page-title">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <h3>Default</h3>
+                      </div>
+                      <div class="col-sm-6">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                          <li class="breadcrumb-item">Dashboard</li>
+                          <li class="breadcrumb-item active">Default</li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Container-fluid starts-->
+                <div class="container-fluid dashboard-default">
+                  <%election.forEach((item)=>{%>
+                    <div class="row">
+                      <div class="card">
+                        <div class="card-header">
+                          <h4>Election Of
+                            <%=item.election_name%>
+                          </h4>
+                        </div>
+                        <div class="card-body d-flex">
+                          <%item.Partys.forEach((party)=>{%>
+                            <div class=" col-lg-3">
+                              <div class="card m-2 l-bg-blue-dark">
+                                <div class="card-statistic-3 p-3">
+                                  <div class="card-icon card-icon-large">
+                                      <%candidate.forEach((candy)=>{%>
+                                        <%if(party.Candidate_Name==candy.PartyName){%>
+                                  
+                                        <img src="../../upload/<%=candy.Symbol%>" style="height:50px; width:50px" alt="">
+                                        <%}%>
+                                        <%})%>
+                                  </div>
+                                  <div class="mb-4">
+                                    <h5 class="card-title mb-0">
+                                      <%=party.Candidate_Name%>
+                                    </h5>
+                                  </div>
+                                  <div class="row align-items-center mb-2 d-flex">
+                                    <div class="col-8">
+                                      <h2 class="d-flex align-items-center mb-0">
+                                        <%=party.Candidate_Votes%>
+                                      </h2>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <%})%>
+                        </div>
+                      </div>
+                    </div>
+                    <%})%>
+                </div>
+                <!-- Container-fluid Ends-->
+              </div>
+              <!-- footer start-->
+              <%- include ('./partials/Footer.ejs') %>
+                <!--footer End-->
+          </div>
+      </div>
+      <%- include ('./partials/script') %>
+  </body>
+
+</html>

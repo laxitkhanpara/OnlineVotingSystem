@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include ('./partials/Metalink.ejs') %>
+
+    <body>
+        <!-- Loader starts-->
+        <%- include ('./partials/Loader.ejs') %>
+            <!-- Loader ends-->
+            <!-- login page start-->
+            <div class="container-fluid p-0">
+                <div class="row m-0">
+                    <div class="col-12 p-0">
+                        <div class="login-card">
+                            <div>
+                                <div><a class="logo" href="index.html"><img class="img-fluid for-light"
+                                            src="../public/images/GiveVote.webp" alt="looginpage"></a></div>
+                                <div class="login-main">
+                                    <form class="theme-form" action="/VerifyOtp" method="post">
+                                        <h4 class="text-center">Give your valuable Vote</h4>
+                                        <p class="text-center">Enter your VoterId Number</p>
+                                        <div class="form-group">
+                                            <label class="col-form-label">VoterID Number</label>
+                                            <input name="VoterId" class="form-control" type="text" required="" placeholder="ABC1234567"
+                                                id="GetOtp">
+                                        </div>
+                                        <div id="getotppart">
+                                            <p class="text-center">You will be get OTP on your mobile number
+                                            which is linked in your voter id.</p>
+                                            <div class="form-group mb-0">
+                                                <button class="btn btn-primary btn-block w-100" id="GetOtpbtn"
+                                                type="button">Get OTP</button>
+                                            </div>
+                                        </div>
+                                            <div id="verifyotppart">
+                                                <div class="form-group">
+                                                    <label class="col-form-label">Enter OTP</label>
+                                                    <input name="EnteredOtp" class="form-control" type="text" required="" placeholder="Enter here"
+                                                        id="">
+                                                    <input name="RealOtp" id="RealOtp" hidden class="form-control" type="text" 
+                                                        id="">
+                                                </div>
+                                                <div class="form-group mb-0">
+                                                    <button class="btn btn-primary btn-block w-100" id=""
+                                                    type="submit">Verify</button>
+                                                </div>
+                                            </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            <!--footer End-->
+            <%- include ('./partials/script') %>
+    </body>
+
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include ('./partials/Metalink.ejs') %>
+
+  <body onload="startTime()">
+    <!-- tap on top starts-->
+    <div class="tap-top"><i data-feather="chevrons-up"></i></div>
+    <!-- tap on tap ends-->
+    <!-- Loader starts-->
+    <%- include ('./partials/Loader.ejs') %>
+    <!-- Loader ends-->
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+      <!-- Page Header Start-->
+      <%- include ('./partials/header') %>
+        <!-- Page Header Ends-->
+        <!-- Page Body Start-->
+        <div class="page-body-wrapper">
+          <!-- Page Sidebar Start-->
+          <%- include ('./partials/sidebar') %>
+            <!-- Page Sidebar Ends-->
+            <!-- Container-fluid starts-->
+            <div class="page-body">
+              <form action="/newUser" method="post" enctype="multipart/form-data">
+                  <div class="container-fluid">
+                      <div class="page-title">
+                          <div class="row">
+                              <div class="col-sm-6">
+                                  <h3>New User</h3>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Container-fluid starts-->
+                  <div class="container-fluid">
+
+                      <div class="edit-profile">
+                          <div class="row">
+                              <div class="col-xl-4 col-lg-5">
+                                  <div class="card">
+                                      <div class="card-header pb-0">
+                                          <h4 class="card-title mb-0">User Information</h4>
+                                          <div class="card-options"><a class="card-options-collapse" href="#"
+                                                  data-bs-toggle="card-collapse"><i
+                                                      class="fe fe-chevron-up"></i></a><a
+                                                  class="card-options-remove" href="#"
+                                                  data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                                          </div>
+                                      </div>
+                                      <div class="card-body">
+
+                                          <div class="row mb-2">
+                                              <div class="profile-title">
+                                                  <div class="d-flex justify-content-center">
+                                                      <!-- image upload -->
+                                                      <div><img class="img-thumbnail" id="preview"
+                                                              src="../images/DefultUser.jpg"
+                                                              style="height: 300px; width: 300px; border-radius:100%">
+                                                      </div>
+
+                                                  </div>
+                                                  <input required type="file" name="image" id="image-input"
+                                                      accept="image/*">
+
+                                              </div>
+                                          </div>
+                                          <div class="mb-3">
+                                              <label class="form-label f-w-500">Email-Address</label>
+                                              <input required name="email" class="form-control"
+                                                  placeholder="your-email@domain.com">
+                                          </div>
+                                          <div class="mb-3">
+                                              <label class="form-label f-w-500">Password</label>
+                                              <input required name="password" class="form-control" type="password"
+                                                  placeholder="******">
+                                          </div>
+                                          <div class="mb-3">
+                                              <label class="form-label f-w-500">UserName</label>
+                                              <input required name="username" class="form-control" placeholder="abc">
+                                          </div>
+                                          <div class="mb-3">
+                                              <label class="form-label f-w-500">Mobile no.</label>
+                                              <input required name="Mobilenum" type="number" class="form-control"
+                                                  placeholder="abc">
+                                          </div>
+
+                                          <div class="mb-3">
+                                              <label class="form-label f-w-500">Role</label>
+                                              <select required name="Role" class="form-control btn-square">
+                                                  <option selected disabled>--Please Select--</option>
+                                                  <% Role.forEach( (item)=>{ %>
+                                                      <option value="<%=item.Role %>">
+                                                          <%=item.Role_Name %>
+                                                      </option>
+                                                      <% }) %>
+                                              </select>
+                                          </div>
+
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-xl-8 col-lg-7">
+                                  <div class="card">
+                                      <div class="card-header pb-0">
+                                          <h4 class="card-title mb-0">Employee Information</h4>
+                                          <div class="card-options"><a class="card-options-collapse" href="#"
+                                                  data-bs-toggle="card-collapse"><i
+                                                      class="fe fe-chevron-up"></i></a><a
+                                                  class="card-options-remove" href="#"
+                                                  data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                                          </div>
+                                      </div>
+                                      <div class="card-body">
+                                          <div class="row">
+                                              <div class="col-sm-6 col-md-4">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">First Name</label>
+                                                      <input required name="firstName" class="form-control" type="text"
+                                                          placeholder="John">
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-6 col-md-4">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">Last Name</label>
+                                                      <input required name="lastName" class="form-control" type="text"
+                                                          placeholder="Deo">
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-6 col-md-4">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">Employee Id</label>
+                                                      <input required name="empId" class="form-control" type="text"
+                                                          placeholder="ABC123">
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-4">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">Blood Group</label>
+                                                      <select required name="bllodGroup"
+                                                          class="form-control btn-square">
+                                                          <option selected disabled>--Please Select--</option>
+                                                          <option value="A">A</option>
+                                                          <option value="A-">A-</option>
+                                                          <option value="B">B</option>
+                                                          <option value="B-">B-</option>
+                                                          <option value="O">O</option>
+                                                          <option value="B-">B-</option>
+                                                          <option value="AB">AB</option>
+                                                          <option value="AB-">AB-</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-md-4">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">Gendar</label>
+                                                      <select required name="gendar" class="form-control btn-square">
+                                                          <option selected disabled>--Please Select--</option>
+                                                          <option value="Male">Male</option>
+                                                          <option value="Female">Female</option>
+                                                          <option value="Other">Other</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-md-4">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">Status</label>
+                                                      <select required name="Status" class="form-control btn-square">
+                                                          <option selected disabled>--Please Select--</option>
+                                                          <option value="Full-Time">Full-Time</option>
+                                                          <option value="Part-Time">Part-Time</option>
+                                                          <option value="Seasonal">Seasonal</option>
+                                                          <option value="Temporary">Temporary</option>
+                                                          <option value="Intern">Intern</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">Type of
+                                                          PayGrad</label>
+                                                      <select required id="PayGrad" class="form-control btn-square">
+                                                          <option selected disabled>--Please Select--</option>
+                                                          <option value="Full-Time">Hourly Pay Grade</option>
+                                                          <option value="Part-Time">Monthly Pay Grad</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <div class="mb-3" id="paygrade">
+                                                      <label class="form-label f-w-500">******</label>
+                                                      <select required name="Status" class="form-control btn-square">
+                                                          <option selected disabled>--Please Select--</option>
+                                                      </select>
+                                                  </div>
+                                                  <div class="mb-3" id="hr">
+                                                      <label class="form-label f-w-500">Hourly Pay
+                                                          Grade</label>
+                                                      <select required name="salary" class="form-control btn-square">
+
+                                                          <option selected disabled>--Please Select--
+                                                          </option>
+                                                          <% HourlyPayGrade.forEach( (item)=>{ %>
+                                                              <option value="<%=item.id %>">
+                                                                  <%=item.HourlyPayGrade %>
+                                                              </option>
+                                                              <% }) %>
+                                                      </select>
+                                                  </div>
+                                                  <div class="mb-3" id="mn">
+                                                      <label class="form-label f-w-500">Monthly Pay
+                                                          Grad</label>
+                                                      <select required name="salary" class="form-control btn-square">
+                                                          <option selected disabled>--Please Select--</option>
+                                                          <% MonthlyPayGrade.forEach( (item)=>{ %>
+                                                              <option value="<%=item.id %>">"
+                                                                  <%=item.MonthlyPayGrade%>"</option>
+                                                              <% }) %>
+                                                      </select>
+                                                  </div>
+                                              </div>
+
+
+
+                                              <div class="col-md-4">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">Department</label>
+                                                      <select required name="department"
+                                                          class="form-control btn-square">
+                                                          <option selected disabled>--Please Select--</option>
+                                                          <% Department.forEach( (item)=>{ %>
+                                                              <option value="<%=item.Department %>">
+                                                                  <%=item.Department %>
+                                                              </option>
+                                                              <% }) %>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class=" col-md-4">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">Designation</label>
+                                                      <select required  name="Designation"
+                                                          class="form-control btn-square">
+                                                          <option selected disabled>--Please
+                                                              Select--</option>
+                                                          <% Designation.forEach( (item)=>{ %>
+                                                              <option value="<%=item.Designation %>">
+                                                                  <%=item.Designation %>
+                                                              </option>
+                                                              <% }) %>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-4">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">Branch</label>
+                                                      <select required name="branch" class="form-control btn-square">
+                                                          <option selected disabled>--Please Select--
+                                                          </option>
+                                                          <% Branch.forEach( (item)=>{ %>
+                                                              <option value="<%=item.Branch %>">
+                                                                  <%=item.Branch %>
+                                                              </option>
+                                                              <% }) %>
+                                                      </select>
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-md-4">
+                                                  <div class="mb-3">
+                                                      <div class="date-picker">
+                                                          <label class="form-label f-w-500">DOB</label>
+                                                          <div class="input-group">
+                                                              <input required name="dob"
+                                                                  class="datepicker-here form-control digits"
+                                                                  type="text" data-language="en">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-md-4">
+                                                  <div class="mb-3">
+                                                      <div class="date-picker">
+                                                          <label class="form-label f-w-500">Join
+                                                              Date</label>
+                                                          <div class="input-group">
+                                                              <input required name="joinDate"
+                                                                  class="datepicker-here form-control digits"
+                                                                  type="text" data-language="en">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-md-4">
+                                                  <div class="mb-3">
+                                                      <div class="date-picker">
+                                                          <label class="form-label f-w-500">Leave
+                                                              Date</label>
+                                                          <div class="input-group">
+                                                              <input name="leaveDate"
+                                                                  class="datepicker-here form-control digits"
+                                                                  type="text" data-language="en">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                  <div class="card">
+                                      <div class="card-header pb-0">
+                                          <h4 class="card-title mb-0">User Address</h4>
+                                          <div class="card-options"><a class="card-options-collapse" href="#"
+                                                  data-bs-toggle="card-collapse"><i
+                                                      class="fe fe-chevron-up"></i></a><a
+                                                  class="card-options-remove" href="#"
+                                                  data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                                          </div>
+                                      </div>
+                                      <div class="card-body">
+                                          <div class="row">
+                                              <div class="col-md-4">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">Country</label>
+                                                      <select required name="Country" class="form-control btn-square"
+                                                          id="country_tap">
+                                                          <option selected disabled>--Please Select--
+                                                          </option>
+                                                          <% countrys.forEach( (item)=>{ %>
+                                                              <option value="<%=item.name %>"
+                                                                  data-countryId="<%=item.isoCode %>">
+                                                                  <%=item.name %>
+                                                              </option>
+                                                              <% }) %>
+
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-4">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">State</label>
+                                                      <select required name="State" class="form-control btn-square"
+                                                          id="state_tap">
+                                                          <option selected disabled>--Please Select--
+                                                          </option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-4">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">City</label>
+                                                      <select required name="City" class="form-control btn-square"
+                                                          id="city_tap">
+                                                          <option selected disabled>--Please Select--
+                                                          </option>
+
+
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-6 col-md-6">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">Street</label>
+                                                      <input required name="Street" class="form-control" type="text"
+                                                          placeholder="123 Main Street">
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-6 col-md-6">
+                                                  <div class="mb-3">
+                                                      <label class="form-label f-w-500">Zip Code</label>
+                                                      <input required name="zipCode" class="form-control" type="text"
+                                                          placeholder="987654">
+                                                  </div>
+                                              </div>
+                                              <div>
+                                                  <button class="btn btn-primary" type="submit"
+                                                      data-bs-original-title="" title="">Submit</button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+
+
+
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+
+              </form>
+              <!-- Container-fluid Ends-->
+          </div>
+            <!-- footer start-->
+            <%- include ('./partials/Footer.ejs') %>
+            <!--footer End-->
+        </div>
+    </div>
+    <%- include ('./partials/script') %>
+  </body>
+
+</html>

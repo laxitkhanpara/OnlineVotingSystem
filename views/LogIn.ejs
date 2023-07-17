@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include ('./partials/Metalink.ejs') %>
+
+  <body onload="startTime()">
+    <!-- tap on top starts-->
+    <div class="tap-top"><i data-feather="chevrons-up"></i></div>
+    <!-- tap on tap ends-->
+    <!-- Loader starts-->
+    <%- include ('./partials/Loader.ejs') %>
+      <!-- Loader ends-->
+      <!-- page-wrapper Start-->
+      <div class="row">
+        <div class="col-xl-5"><img class="bg-img-cover bg-center" src="../images/login/3.jpg" alt="looginpage"></div>
+        <div class="col-xl-7 p-0">
+          <div class="login-card">
+            <div>
+              <div><a class="logo" href="index.html"><img class="img-fluid for-light" src="../images/logo/logo2.png"
+                    alt="looginpage"></a></div>
+              <div class="login-main">
+                <form class="theme-form" method="post" action="/LogIn">
+                  <h4 class="text-center">Sign in to account</h4>
+                  <p class="text-center">Enter your email & password to login</p>
+                  <div class="form-group">
+                    <label class="col-form-label">Email Address</label>
+                    <input name="Email" class="form-control" type="email" required="" placeholder="Test@gmail.com">
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label">Password</label>
+                    <div class="form-input position-relative">
+                      <input name="Password" class="form-control" type="password" name="login[password]" required=""
+                        placeholder="*********">
+                      <div class="show-hide"><span class="show"> </span></div>
+                    </div>
+                  </div>
+                  <div class="form-group mb-0">
+                    <a class="link" href="forget-password.html">Forgot password?</a>
+                    <div class="text-end mt-3">
+                      <button class="btn btn-primary btn-block w-100" type="submit">Sign in</button>
+                    </div>
+                  </div>
+                  <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2" href="/SignUp">Create
+                      Account</a></p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--footer End-->
+      <%- include ('./partials/script') %>
+  </body>
+
+</html>

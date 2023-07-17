@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include ('./partials/Metalink.ejs') %>
+
+    <body onload="startTime()">
+        <!-- tap on top starts-->
+        <div class="tap-top"><i data-feather="chevrons-up"></i></div>
+        <!-- tap on tap ends-->
+        <!-- Loader starts-->
+        <%- include ('./partials/Loader.ejs') %>
+            <!-- Loader ends-->
+            <!-- page-wrapper Start-->
+            <div class="page-wrapper compact-wrapper" id="pageWrapper">
+                <!-- Page Header Start-->
+                <%- include ('./partials/header') %>
+                    <!-- Page Header Ends-->
+                    <!-- Page Body Start-->
+                    <div class="page-body-wrapper">
+                        <!-- Page Sidebar Start-->
+                        <%- include ('./partials/sidebar') %>
+                            <!-- Page Sidebar Ends-->
+                            <div class="page-body">
+                                <!-- AddCandidate Model button-->
+                                <button class="btn btn-primary mb-2" type="button" data-bs-toggle="modal"
+                                    data-bs-target=".bd-example-modal-lg">Add Candidate</button>
+
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <!-- Zero Configuration  Starts-->
+                                        <div class="col-sm-12">
+                                            <div class="card">
+                                                <div class="card-header pb-0">
+                                                    <h4>User</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="table-responsive theme-scrollbar">
+                                                        <table class="display" id="basic-1">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>S/l</th>
+                                                                    <th>Photo</th>
+                                                                    <th>Symbole</th>
+                                                                    <th>Party Name</th>
+                                                                    <th>Candidate Id</th>
+                                                                    <th>Candidate Name</th>
+                                                                    <th>Mobile</th>
+                                                                    <th>Address</th>
+                                                                    <th>Delete</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <% var i=1 %>
+                                                                    <% CandidateDetail.forEach((item)=>{ %>
+
+                                                                        <tr class="align-middle">
+                                                                            <th scope="row">
+                                                                                <%=i++%>
+                                                                            </th>
+                                                                            <td> <img
+                                                                                    style="height: 55px; width: 55px; border-radius: 100%;"
+                                                                                    src="../upload/<%=item.image%>"
+                                                                                    alt="">
+                                                                            </td>
+                                                                           
+                                                                            <td> <img
+                                                                                    style="height: 55px; width: 55px; border-radius: 100%;"
+                                                                                    src="../upload/<%=item.Symbol%>"
+                                                                                    alt="">
+                                                                            </td>
+                                                                            <td>
+                                                                                <%=item.PartyName %>
+
+                                                                            </td>
+                                                                            <td>
+                                                                                <%=item.CandidateId %>
+                                                                            </td>
+                                                                            <td>
+                                                                                <%=item.FirstName %>
+                                                                                    <br>
+                                                                                    <span class="text-muted">
+                                                                                        <%=item.LastName %>
+                                                                                    </span>
+                                                                            </td>
+                                                                            
+                                                                            <td>
+                                                                                <%=item.mobile %>
+
+                                                                            </td>
+                                                                            <td>
+                                                                                <%=item.Country %>
+                                                                                    <br><span class="text-muted">State:
+                                                                                        <%=item.State %>
+                                                                                    </span>
+                                                                                    <br><span class="text-muted">City:
+                                                                                        <%=item.City %>
+                                                                                    </span>
+                                                                                    <br><span
+                                                                                        class="text-muted">zipCode:
+                                                                                        <%=item.zipCode %>
+                                                                                    </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <ul class="action">
+                                                                                    <li class="delete"><a
+                                                                                            href="/Candidate/delete/<%=item.id%>"><i
+                                                                                                class="icon-trash"></i></a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <% }) %>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!-- footer start-->
+                            <%- include ('./partials/Footer.ejs') %>
+                                <!--footer End-->
+                    </div>
+            </div>
+
+            <!-- model of new Candidate add -->
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myLargeModalLabel">New Candidate</h4>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/AddCandidate" method="post" enctype="multipart/form-data">
+                                <!-- Container-fluid starts-->
+                                <div class="container-fluid">
+
+                                    <div class="edit-profile">
+                                        <div class="row">
+                                            <div class="col-xl-4 col-lg-5">
+                                                <div class="card">
+                                                    <div class="card-header pb-0">
+                                                        <h4 class="card-title mb-0">Candidate Photo</h4>
+                                                        <div class="card-options"><a class="card-options-collapse"
+                                                                href="#" data-bs-toggle="card-collapse"><i
+                                                                    class="fe fe-chevron-up"></i></a><a
+                                                                class="card-options-remove" href="#"
+                                                                data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+
+                                                        <div class="row mb-2">
+                                                            <div class="profile-title">
+                                                                <!-- Photo of candidate -->
+                                                                <div class="d-flex justify-content-center">
+                                                                    <div><img class="img-thumbnail" id="preview"
+                                                                            src="../images/DefultUser.jpg"
+                                                                            style="height: 150px; width: 150px; border-radius:100%">
+                                                                    </div>
+                                                                </div>
+                                                                <input required type="file" name="image"
+                                                                    id="image-input" accept="image/*">
+
+                                                                <!-- Icon of party -->
+
+                                                                <h5 class="mt-3">Icon of party</h5>
+                                                                <div class="d-flex justify-content-center">
+                                                                    <div><img class="img-thumbnail" id="previewSymbole"
+                                                                            src="../images/DefultSymbole.jpg"
+                                                                            style="height: 150px; width: 150px; border-radius:100%">
+                                                                    </div>
+                                                                </div>
+                                                                <input required type="file" name="Symbol"
+                                                                    id="Symbole-input" accept="image/*">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-8 col-lg-7">
+                                                <div class="card">
+                                                    <div class="card-header pb-0">
+                                                        <h4 class="card-title mb-0">Candidate Details
+                                                        </h4>
+                                                        <div class="card-options"><a class="card-options-collapse"
+                                                                href="#" data-bs-toggle="card-collapse"><i
+                                                                    class="fe fe-chevron-up"></i></a><a
+                                                                class="card-options-remove" href="#"
+                                                                data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label f-w-500">First
+                                                                        Name</label>
+                                                                    <input required name="FirstName"
+                                                                        class="form-control" type="text"
+                                                                        placeholder="John">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label f-w-500">Last
+                                                                        Name</label>
+                                                                    <input required name="LastName" class="form-control"
+                                                                        type="text" placeholder="Deo">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label f-w-500">Party Name</label>
+                                                                    <input required name="PartyName"
+                                                                        class="form-control" type="text" placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label f-w-500">Candidate
+                                                                        Id</label>
+                                                                    <input required name="CandidateId"
+                                                                        class="form-control" type="text"
+                                                                        placeholder="ABC123">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label f-w-500">mobile</label>
+                                                                    <input required name="mobile" class="form-control"
+                                                                        type="text" placeholder="+91">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label f-w-500">Sins</label>
+                                                                    <input required name="Sins" class="form-control"
+                                                                        type="text" placeholder="1947">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label f-w-500">About</label>
+                                                                    <textarea name="About" class="form-control"
+                                                                        id="exampleFormControlTextarea4" rows="3"
+                                                                        data-sonic="detected"
+                                                                        style="height: 47px;"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="mb-3">
+                                                                        <label
+                                                                            class="form-label f-w-500">Country</label>
+                                                                        <select required name="Country"
+                                                                            class="form-control btn-square"
+                                                                            id="country_tap">
+                                                                            <option selected disabled>--Please
+                                                                                Select--
+                                                                            </option>
+                                                                            <% countrys.forEach( (item)=>{ %>
+                                                                                <option value="<%=item.name %>"
+                                                                                    data-countryId="<%=item.isoCode %>">
+                                                                                    <%=item.name %>
+                                                                                </option>
+                                                                                <% }) %>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label f-w-500">State</label>
+                                                                        <select required name="State"
+                                                                            class="form-control btn-square"
+                                                                            id="state_tap">
+                                                                            <option selected disabled>--Please
+                                                                                Select--
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label f-w-500">City</label>
+                                                                        <select required name="City"
+                                                                            class="form-control btn-square"
+                                                                            id="city_tap">
+                                                                            <option selected disabled>--Please
+                                                                                Select--
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-6">
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label f-w-500">Street</label>
+                                                                        <input required name="Street"
+                                                                         class="form-control" type="text"
+                                                                            placeholder="123 Main Street">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-6">
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label f-w-500">Zip
+                                                                            Code</label>
+                                                                        <input required name="zipCode"
+                                                                            class="form-control" type="text"
+                                                                            placeholder="987654">
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <button class="btn btn-primary" type="submit"
+                                                                        data-bs-original-title=""
+                                                                        title="">Submit</button>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- model of edite Candidate -->
+            <div class="modal fade model-of-editCandidate" tabindex="-1" role="dialog"
+                aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="mySmallModalLabel">Department</h4>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/EditCandidate" method="post" enctype="multipart/form-data">
+                                <!-- Container-fluid starts-->
+                                <div class="container-fluid">
+
+                                    <div class="edit-profile">
+                                        <div class="row">
+                                            <div class="col-xl-4 col-lg-5">
+                                                <div class="card">
+                                                    <div class="card-header pb-0">
+                                                        <h4 class="card-title mb-0">Candidate Photo</h4>
+                                                        <div class="card-options"><a class="card-options-collapse"
+                                                                href="#" data-bs-toggle="card-collapse"><i
+                                                                    class="fe fe-chevron-up"></i></a><a
+                                                                class="card-options-remove" href="#"
+                                                                data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+
+                                                        <div class="row mb-2">
+                                                            <div class="profile-title">
+                                                                <div class="d-flex justify-content-center">
+                                                                    <!-- image upload -->
+                                                                    <div><img class="img-thumbnail" id="previews"
+                                                                            src="../images/DefultUser.jpg"
+                                                                            style="height: 150px; width: 150px; border-radius:100%">
+                                                                    </div>
+
+                                                                </div>
+                                                                <input required type="file" name="image"
+                                                                    id="image-inputs" accept="image/*">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-8 col-lg-7">
+                                                <div class="card">
+                                                    <div class="card-header pb-0">
+                                                        <h4 class="card-title mb-0">Voter Details
+                                                        </h4>
+                                                        <div class="card-options"><a class="card-options-collapse"
+                                                                href="#" data-bs-toggle="card-collapse"><i
+                                                                    class="fe fe-chevron-up"></i></a><a
+                                                                class="card-options-remove" href="#"
+                                                                data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label f-w-500">First
+                                                                        Name</label>
+                                                                    <input required id="FirstName" name="FirstName"
+                                                                        class="form-control" type="text"
+                                                                        placeholder="John">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label f-w-500">Last
+                                                                        Name</label>
+                                                                    <input required id="LastName" name="LastName"
+                                                                        class="form-control" type="text"
+                                                                        placeholder="Deo">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label f-w-500">Voter
+                                                                        Id</label>
+                                                                    <input required id="VoterId" name="VoterId"
+                                                                        class="form-control" type="text"
+                                                                        placeholder="ABC123">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label f-w-500">mobile</label>
+                                                                    <input required id="mobile" name="mobile"
+                                                                        class="form-control" type="text"
+                                                                        placeholder="+91">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="mb-3">
+                                                                        <label
+                                                                            class="form-label f-w-500">Country</label>
+                                                                        <select required id="Country" name="Country"
+                                                                            class="form-control btn-square"
+                                                                            id="country_tap">
+
+                                                                            <% countrys.forEach( (item)=>{ %>
+                                                                                <option value="<%=item.name %>"
+                                                                                    data-countryId="<%=item.isoCode %>">
+                                                                                    <%=item.name %>
+                                                                                </option>
+                                                                                <% }) %>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label f-w-500">State</label>
+                                                                        <select required id="State" name="State"
+                                                                            class="form-control btn-square"
+                                                                            id="state_tap">
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label f-w-500">City</label>
+                                                                        <select required id="City" name="City"
+                                                                            class="form-control btn-square"
+                                                                            id="city_tap">
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-6">
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label f-w-500">Street</label>
+                                                                        <input required id="Street" name="Street"
+                                                                            class="form-control" type="text"
+                                                                            placeholder="123 Main Street">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-6">
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label f-w-500">Zip
+                                                                            Code</label>
+                                                                        <input required id="zipCode" name="zipCode"
+                                                                            class="form-control" type="text"
+                                                                            placeholder="987654">
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <button class="btn btn-primary" type="submit"
+                                                                        data-bs-original-title=""
+                                                                        title="">Submit</button>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%- include ('./partials/script') %>
+    </body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include ('./partials/Metalink.ejs') %>
+
+  <body>
+    <!-- Loader starts-->
+    <%- include ('./partials/Loader.ejs') %>
+      <!-- Loader ends-->
+      <!-- login page start-->
+      <div class="backimg">
+        <div class="container-fluid p-0">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-8 p-0 ">
+              <div class="col-sm-12">
+                <div class="m-3 card d-flex justify-content-center align-items-center">
+                  <div class="card-header pb-0">
+                    <h4>Select Election</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive theme-scrollbar">
+                      <form action="/SelectElection" method="post">
+                        <table class="display" id="basic-1">
+                          <thead>
+                            <tr>
+                              <th>Mark</th>
+                              <th>S/l</th>
+                              <th>election_name</th>
+                              <th>From_date</th>
+                              <th>To_date </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% var i=1 %>
+                              <% Elections.forEach((item)=>{ %>
+                                <tr class="align-middle">
+                                  <td><input id="selectedElection" type="radio" name="selectedVoter"
+                                      value="<%=item.id%>">
+                                  </td>
+                                  <th scope="row">
+                                    <%=i++%>
+                                  </th>
+                                  <td>
+                                    <%=item.election_name %>
+                                  </td>
+                                  <td>
+                                    <%=item.From_date %>
+                                  </td>
+                                  <td>
+                                    <%=item.To_date %>
+                                  </td>
+                                </tr>
+                                <% }) %>
+                          </tbody>
+                        </table>
+                        <div class="d-flex align-content-center justify-content-center">
+                          <button class="m-2 btn btn-secondary" type="submit" data-bs-original-title=""
+                            title="">Submit</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <script>
+        function handleRadioSelection(radioButton) {
+          const radioButtons = document.querySelectorAll('input[name="Vote"]');
+          radioButtons.forEach(btn => {
+            if (btn !== radioButton) {
+              btn.checked = false;
+            }
+          });
+        }
+      </script>
+      <!--footer End-->
+      <%- include ('./partials/script') %>
+  </body>
+
+</html>

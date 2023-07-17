@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon" />
+    <title>Election Commission of india</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .certificate-container {
+            width: 800px;
+            height: 600px;
+            padding: 20px;
+            text-align: center;
+            border: 10px solid #787878;
+        }
+        .certificate-content {
+            width: 750px;
+            height: 550px;
+            padding: 20px;
+            text-align: center;
+            border: 5px solid #787878;
+        }
+
+        .signature,
+        .title {
+            float: left;
+            border-top: 1px solid #000;
+            width: 200px;
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #008CBA;
+            border-radius: 25px;
+            height: 45px;
+            width: 100px;
+            margin-top: 20px;
+            margin-top: 45px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="certificate-container">
+        <div class="certificate-content" id="pdfContent">
+            <img src="https://eci.gov.in/uploads/monthly_2022_06/logo.png.d0e6aee2d64193769bffbc6e720bbe96.png"
+                style="height: 65px; width:auto" alt="">
+            <br>
+            <span style="font-size:50px; font-weight:bold">Certificate of Completion</span>
+            <br><br>
+            <span style="font-size:25px"><i>This is to certify that</i></span>
+            <span style="font-size:30px"><b><br>
+                    <%=data.FirstName%>
+                        <%=data.LastName%>
+                </b></span><br /><br />
+            <span style="font-size:25px"><i>has completed his/her voting</i></span> <br /><br />
+            <span style="font-size:25px">at the online platform of</span> <br /><br />
+            <span style="font-size:25px"> <b>Election Commission of India</b></span> <br /><br />
+            <span style="font-size:25px"><i>Completed Date</i></span><br>
+            <% const date=new Date(); %>
+                <span style="font-size:25px">
+                    <%= date.getFullYear() %>-<%= date.getMonth() + 1 %>-<%= date.getDate() %>
+                </span>
+                <table style="float:left;margin-left:35px">
+                    <tr>
+                        <td><span><img
+                                    src="https://eci.gov.in/uploads/monthly_2018_04/copyright-registration-boca-raton.thumb.jpg.f4991f2b870c99cfab69f7e11370c214.jpg"
+                                    style="height: 100px;" alt="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:200px;float:left;border:0;border-bottom:1px solid #000;"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center"><span><b>Copyright</b></td>
+                    </tr>
+                </table>
+                <table style="margin-right:40px;float:right">
+                    <tr>
+                        <td><span><img src="https://m.media-amazon.com/images/I/51vhveTjweL._SX355_.jpg"
+                                    style="height: 100px;" alt=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width:200px;float:right;border:0;border-bottom:1px solid #000;"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center"><span><b>Stamp</b></td>
+                    </tr>
+                </table>
+        </div>
+        <button class="btn" id="getpdf">Print</button>
+        <a href="/"><button class="btn">Home</button></a>
+    </div>
+    <script type="text/javascript">
+        alert(lol)
+        window.onbeforeunload = function(evt) {
+            var message = 'Are you sure you want to leave?';
+            if (evt) {
+                 document.forms["myForm"].submit();
+           }
+            else {
+            }
+            return message;
+        }
+</script>
+    
+    <%- include ('./partials/script') %>
+</body>
+
+</html>

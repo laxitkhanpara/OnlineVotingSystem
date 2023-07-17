@@ -1,0 +1,7 @@
+1. install npm                      ==npm init
+2. install nodemon                  ==npm i nodemone
+3. install packegesfa               ==
+
+
+
+twilio:dSrWs-t4RlOR5qt-Rx7lWJgznHSpsDFiIiYVqvDC

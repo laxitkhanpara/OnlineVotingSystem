@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../public/images/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../../public/images/logo.png" type="image/x-icon" />
+    <title>Election Commission of india</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News App</title>
+    <link rel="stylesheet" type="text/css" href="../css/vendors/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive.css">
+    <link id="color" rel="stylesheet" href="../css/color-1.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="../css/NewsStyle.css">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #f2f2f2;
+            background-image: url('https://www.deccanherald.com/sites/dh/files/article_images/2020/05/19/file74ltin3oe2vizhadiop-2041735794-1555577719.jpg');
+            font-family: Arial, sans-serif;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        
+        .chat-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #4d9df8;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background-color: #5c61f2;
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .chat-messages {
+            padding: 15px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .chat-input {
+            padding: 15px;
+            border-top: 1px solid #ccc;
+            background-color: #5c61f2;
+        }
+
+        .btn-send {
+            background-color: #1ca002;
+            color: #fff;
+            border-radius: 5px;
+            height: 35px;
+            text-align: center;
+            line-height: reasonable;
+            padding: 5px;
+            padding-left: 15px;
+        }
+
+        .message-box {
+            background-color: #ffffff;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            max-width: 70%;
+        }
+
+        .message-box.right {
+            align-self: flex-end;
+            background-color: #1ca002;
+            color: #fff;
+            margin-left: auto;
+        }
+
+        /* Custom styling for the input field */
+        .form-control:focus {
+            border-color: #0084ff;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="landing-header">
+        <div class="container-fluid" style="padding: 0px !important">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-light p-0" id="navbar-example2"><a class="navbar-brand"
+                            href="javascript:void(0)">
+                            <img class="img-fluid"
+                                src="https://eci.gov.in/uploads/monthly_2022_06/logo.png.d0e6aee2d64193769bffbc6e720bbe96.png"
+                                alt=""></a>
+                        <ul class="landing-menu nav nav-pills">
+                            <li class="nav-item"><a class="nav-link text-white" href="/">Home</a></li>
+                            <li class="nav-item"><a class="nav-link text-white" data-bs-toggle="modal"
+                                    data-bs-target=".bd-example-modal-lg" href="/">Terms and Conditions</a></li>
+                            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                data-bs-target=".bd-example-modal-lg">Add Voter</button> -->
+                        </ul>
+                        <div class="buy-block">
+                            <div class="toggle-menu"><i class="fa fa-bars"></i></div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="backimgs">
+        <div class="container">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h4 class="mb-0">Chat App</h4>
+                </div>
+                <div class="chat-messages" id="chatMessages"></div>
+                <div class="chat-input">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="messageInput" placeholder="Type your message...">
+                        <div class="input-group-append">
+                            <button class="btn btn-send" id="sendButton" type="button">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myLargeModalLabel">Terms and Conditions</h4>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    Please read these Terms and Conditions ("Agreement") carefully before using our Chatting Web App
+                    ("the App"). This Agreement sets forth the legally binding terms and conditions for your use of the
+                    App.
+                    <br>
+                    1. Acceptance of Terms:
+                    By using the App, you agree to be bound by this Agreement. If you do not agree with any part of the
+                    Agreement, you must not use the App.
+                    <br>
+                    2. Eligibility:
+                    You must be at least 13 years old to use the App. If you are under 18 years old, you must have
+                    parental or legal guardian consent to use the App. By using the App, you represent and warrant that
+                    you meet these eligibility requirements.
+                    <br>
+                    3. User Conduct:
+                    You agree to use the App solely for lawful purposes and in a manner consistent with all applicable
+                    laws and regulations. You shall not use the App to transmit any content that is illegal, harmful,
+                    abusive, harassing, defamatory, obscene, or otherwise objectionable. You shall not engage in any
+                    activity that disrupts or interferes with the functioning of the App or its users.
+                    <br>
+                    4. User Content:
+                    You are solely responsible for the content you transmit through the App. You retain all ownership
+                    rights to your content, but by transmitting it through the App, you grant us a worldwide,
+                    non-exclusive, royalty-free license to use, reproduce, modify, adapt, publish, translate,
+                    distribute, and display such content for the purposes of operating and improving the App.
+                    <br>
+                    5. Privacy:
+                    We respect your privacy and handle your personal information in accordance with our Privacy Policy.
+                    By using the App, you consent to the collection, use, and disclosure of your personal information as
+                    described in our Privacy Policy.
+                    <br>
+                    6. Intellectual Property:
+                    The App and all its contents, including but not limited to text, graphics, logos, images, software,
+                    and audio/video clips, are the property of the App owner or its licensors and are protected by
+                    intellectual property laws. You may not use, reproduce, modify, or distribute any content from the
+                    App without prior written permission from the App owner.
+                    <br>
+                    7. Termination:
+                    We reserve the right to suspend or terminate your access to the App at any time, without prior
+                    notice, for any reason or no reason, including but not limited to violation of this Agreement or
+                    applicable laws.
+                    <br>
+                    8. Disclaimer of Warranty:
+                    The App is provided "as is" without any warranties, express or implied. We do not warrant that the
+                    App will be error-free, secure, or uninterrupted. Your use of the App is at your own risk.
+                    <br>
+                    9. Limitation of Liability:
+                    In no event shall we be liable for any indirect, incidental, special, or consequential damages
+                    arising out of or in connection with the use of the App. Our total liability, whether in contract,
+                    tort (including negligence), or otherwise, shall not exceed the amount paid by you (if any) for
+                    using the App.
+                    <br>
+                    10. Changes to the Agreement:
+                    We reserve the right to modify this Agreement at any time. Any changes will be effective immediately
+                    upon posting the modified Agreement on the App. Your continued use of the App after the posting of
+                    changes constitutes your acceptance of the modified Agreement.
+                    <br>
+                    11. Governing Law:
+                    This Agreement shall be governed by and construed in accordance with the laws of [Insert
+                    Jurisdiction]. Any disputes arising out of or in connection with this Agreement shall be subject to
+                    the exclusive jurisdiction of the courts in [Insert Jurisdiction].
+                    <br>
+
+
+                    By using the Chatting Web App, you acknowledge that you have read, understood, and agreed to be
+                    bound by this Agreement.
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Socket.io -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="../js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../js/landing_sticky.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/animation/wow/wow.min.js"></script>
+    <script src="../js/landing.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="../js/ChatClientside.js"></script>
+
+</body>
+
+</html>
